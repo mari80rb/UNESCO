@@ -11,9 +11,11 @@ h2 {
   color: black;
 }
 
-main {
-  background-color: rgb(191, 223, 243);
+body {
+  background-color: rgb(234, 244, 251);
 }
+
+/* fjerner streger i header vha. display none*/
 .entry .entry-title:before {
   background: #767676;
   content: "\020";
