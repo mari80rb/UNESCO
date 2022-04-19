@@ -10,3 +10,7 @@ Description: Stylish Child Theme besed on Twenty Nineteen
 h2 {
   color: black;
 }
+
+main {
+  background-color: rgb(191, 223, 243);
+}
