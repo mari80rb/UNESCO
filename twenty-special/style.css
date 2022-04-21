@@ -7,6 +7,10 @@ Version: 1.0.0
 Description: Stylish Child Theme besed on Twenty Nineteen
 
 */
+
+* {
+  margin: 0;
+}
 h2 {
   color: black;
 }
@@ -51,10 +55,9 @@ p {
   padding: 50px;
 }
 
-#first_section .section_wrapper {
+header .front-page {
   width: 100%;
   height: 100vh;
-  background-image: url(billeder/tim-trad-215254.webp);
+  background-image: url(http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/tim-trad-215254-scaled.jpg);
   background-size: cover;
-  z-index: -1;
 }
