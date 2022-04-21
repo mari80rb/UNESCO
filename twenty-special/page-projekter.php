@@ -11,15 +11,16 @@
 
 get_header();
 ?>
+<div id="primary" class="content-area">
+		<main id="main" class="site-main">
 <template>
 				<article>
-					<h2></h2>
+					<h2>Test Projekter</h2>
 					<img src="" alt="">
 					<p></p>
 </article>
 </template>
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	
 </main><!-- #main -->
 			<script>
 
