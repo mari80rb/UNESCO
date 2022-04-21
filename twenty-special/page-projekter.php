@@ -9,13 +9,35 @@
  * @since Twenty Nineteen 1.0
  */
 
+
+
 get_header();
+
+
 ?>
+	<style>
+		  img {
+            width: 300px;
+			
+        }
+		
+	#drinks-oversigt {
+		display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+	}
+
+</style>
+
 <div id="primary" class="content-area">
+
 		<main id="main" class="site-main">
+
+			<h1 id="overskrift">Projekter</h1>
+		<section id="drinks-oversigt"></section>
+			
 <template>
 				<article>
-					<h2>Test Projekter</h2>
+					<h2></h2>
 					<img src="" alt="">
 					<p></p>
 </article>
