@@ -11,6 +11,53 @@
 
 get_header();
 ?>
+	<style>
+		* {
+  margin: 0;
+  box-sizing: border-box;
+}
+		h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  line-height: 1.25;
+  margin-bottom: 2;
+}
+
+h3 {
+  font-size: 1.0rem;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+
+p {
+  font-size: 1.1rem;
+}
+		  img {
+           vertical-align: middle;
+		  
+  width:100%;
+  max-width: 600px;
+
+
+        }
+		main{
+			  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+  margin-block: 3rem;
+		}
+		
+	#projekt-oversigt {
+		display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+		gap: 1rem;
+	}
+
+</style>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
@@ -21,15 +68,15 @@ get_header();
         </div>
 
         <section>
-            <h2>prutfis</h2>
-            <h3>Ingredienser</h3>
-            <p class="ingredienser"></p>
-            <h3>Opskrift</h3>
-            <p class="opskrift"></p>
-            <h3>Historie</h3>
-            <p class="oprindelse"></p>
+            <h2></h2>
+            <h3>Overskrift</h3>
+            <p class="overskrift"></p>
+            <h3>Beskrivelse</h3>
+            <p class="beskrivelse"></p>
+            <h3>Skole</h3>
+            <p class="skole"></p>
             <div class="cont">
-               <a class="knap" href="http://www.mariasattrup.dk/kea/09_passionssite/wordpress/drinks/">TILBAGE</a>
+               <a class="knap" href="http://www.mariasattrup.dk/kea/unesco/projekter">TILBAGE</a>
             </div>
         </section>
 
@@ -40,35 +87,32 @@ get_header();
 		 <script>
  
 console.log("scriptStart");
-        const dburl = "http://mariasattrup.dk/kea/09_passionssite/wordpress/wp-json/wp/v2/drink/"+<?php echo get_the_ID() ?>;
-        let drink;
+        const dburl = "http://mariasattrup.dk/kea/unesco/wp-json/wp/v2/projekt/"+<?php echo get_the_ID() ?>;
+        let projekt;
      
 
-        let ingredienser;
+        let projekter;
 
         document.addEventListener("DOMContentLoaded", loadJson);
 
         async function loadJson() {
             console.log("loadJson");
             const jsonData = await fetch(dburl);
-            drink = await jsonData.json();
+            projekt = await jsonData.json();
 
-            /*Omskrive \n til <br>: Sætte ingredienser i listeform*/
-            ingredienser = drink.ingredienser.replace(/\n/g, "<br>")
-            // console.log(ingredienser)
-
-            visDrink(drink);
-            console.log(drink);
+           
+            visProjekt(projekt);
+            console.log(projekt);
         }
 
-        function visDrink() {
-            console.log("visDrink");
-            document.querySelector("h2").textContent = drink.title.rendered;
-            // console.log(madret.navn);
-            document.querySelector(".ingredienser").innerHTML = drink.ingredienser;
-            document.querySelector(".image").src = drink.billede.guid;
-            document.querySelector(".opskrift").textContent = drink.opskrift;
-            document.querySelector(".oprindelse").textContent = drink.historie;
+        function visProjekt() {
+            console.log("visProjekt");
+            document.querySelector("h2").textContent = projekt.title.rendered;
+            // console.log(projekt.navn);
+            document.querySelector(".overskrift").innerHTML = projekt.overskrift;
+            document.querySelector(".image").src = projekt.billede.guid;
+            document.querySelector(".beskrivelse").textContent = projekt.beskrivelse;
+            document.querySelector(".skole").textContent = projekt.skole;
         }
 
 

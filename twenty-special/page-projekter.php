@@ -16,14 +16,47 @@ get_header();
 
 ?>
 	<style>
+		* {
+  margin: 0;
+  box-sizing: border-box;
+}
+		h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  line-height: 1.25;
+  margin-bottom: 2;
+}
+
+h3 {
+  font-size: 1.0rem;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+
+p {
+  font-size: 1.1rem;
+}
 		  img {
-            width: 300px;
-			
+           vertical-align: middle;
+  height: auto;
+  width: 100%;
+
         }
+		main{
+			  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+  margin-block: 3rem;
+		}
 		
-	#drinks-oversigt {
+	#projekt-oversigt {
 		display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+		gap: 1rem;
 	}
 
 </style>
@@ -33,7 +66,7 @@ get_header();
 		<main id="main" class="site-main">
 
 			<h1 id="overskrift">Projekter</h1>
-		<section id="drinks-oversigt"></section>
+		<section id="projekt-oversigt"></section>
 			
 <template>
 				<article>
@@ -47,10 +80,10 @@ get_header();
 			<script>
 
 
-				let drinks ;
-				const liste = document.querySelector("#drinks-oversigt");
+				let projekt ;
+				const liste = document.querySelector("#projekt-oversigt");
 				const skabelon =document.querySelector("template");
-				let filterDrink = "alle";
+				let filterProjekt = "alle";
 				document.addEventListener("DOMContentLoaded", start);
 
 				function start() {
@@ -64,26 +97,26 @@ const url = "http://mariasattrup.dk/kea/unesco/wp-json/wp/v2/projekt?per_page=10
 async function getJson() {
 	console.log("getJson");
 	let response = await fetch(url);
-	drinks = await response.json();
-	visDrinks();
+	projekt = await response.json();
+	visProjekter();
 }
 
-function visDrinks() {
-		console.log("visDrinks");
-	console.log(drinks);
-	drinks.forEach(drink => {
-		console.log("foreach kører på drinks");
+function visProjekter() {
+		console.log("visProjekter");
+	console.log(projekt);
+	projekt.forEach(projekt => {
+		console.log("foreach kører på projekter");
 		const klon = skabelon.cloneNode(true).content;
-		klon.querySelector("h2").textContent = drink.title.rendered;
-		klon.querySelector("img").src = drink.billede.guid;
+		klon.querySelector("h2").textContent = projekt.title.rendered;
+		klon.querySelector("img").src = projekt.billede.guid;
 
 		klon.querySelector("article").addEventListener("click", () => {
-			location.href = drink.link;
+			location.href = projekt.link;
 		})
 	
 
-		//apppend klon til #drink-oversigt
-		const beholder = document.querySelector("#drinks-oversigt");
+		//apppend klon til #projekt-oversigt
+		const beholder = document.querySelector("#projekt-oversigt");
 		beholder.appendChild(klon);
 	})
 }
