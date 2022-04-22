@@ -23,11 +23,27 @@ get_header();
 		h1 {
   font-size: 3rem;
 }
+h2 #overskrift ::before {
+  background: #767676;
+  content: "\020";
+  display: none;
+  height: 2px;
+  margin: 1rem 0;
+  width: 1em;
+}
 
 h2 {
   font-size: 1.2rem;
   line-height: 1.25;
   margin-bottom: 2;
+}
+h2::before {
+  background: #767676;
+  content: "\020";
+  display: none;
+  height: 2px;
+  margin: 1rem 0;
+  width: 1em;
 }
 
 h3 {
@@ -64,6 +80,10 @@ p {
 <div id="primary" class="content-area">
 
 		<main id="main" class="site-main">
+			<section id="verdensmaal-sortering">
+				<h2>Her kommer sortering af verdensmål</h2>
+				<img src="verdensmaal.jpg" alt="">
+			</section>
 
 			<h1 id="overskrift">Projekter</h1>
 		<section id="projekt-oversigt"></section>
