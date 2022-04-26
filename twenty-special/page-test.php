@@ -11,37 +11,14 @@
 
 
 
-
-
 get_header();
 
 
 ?>
-
 	<style>
 		* {
   margin: 0;
   box-sizing: border-box;
-}
-.site-title p, a {
-	display: none;
-}
-
-.site-title {
-	background-image: url(http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/cropped-logohvid.webp);
-}
-@font-face {
-	font-family: lato;
-	src: url(lato-bold-webfont.woff2);
-}
-.site-header {
-	background-color: #577e20;
-
-}
-
-a {
-	font-family: lato;
-	color: white;
 }
 
 		h1 {
@@ -82,26 +59,14 @@ p {
 }
 
 #verdensmaal-knapper{
-	/* display: grid;
+	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
-	grid-gap: 10px; */
-
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-		grid-gap: 10px;
-		max-width: 1000px;
-		margin-inline: auto;
-		padding-bottom: 50px;
+	grid-gap: 10px;
 }
-/* display: grid;
-		grid-template-columns: repeat(6, 150px);
-		gap: 20px;
-} */
 #verdensmaal-knapper img{
 	object-fit: cover;
 	max-width: 100px;
-	align: center;
 }
 	
 		main {
@@ -125,7 +90,10 @@ p {
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		grid-gap: 30px;
 		
-	
+		  
+		
+
+
 		
 	}
 	#projekt-oversigt img {
@@ -170,11 +138,35 @@ p {
 			<p>Her kan du søge på alle skolernes uploadede projekter, og få inspiration til din undervisning.</p>
 			<h2>Sorter efter verdensmål:</h2>
 			<section id="verdensmaal-knapper">
-	
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-01.webp" data-maal="13" alt="verdensmaal_01">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-02.webp" alt="verdenmaal_02">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-03.webp" alt="verdensmaal_03">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-04.webp" alt="verdensmaal_04">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-05.webp" alt="verdenmaal_05">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-06.webp" alt="verdenmaal_06">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-07.webp" alt="verdenmaal_07">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-08.webp" alt="verdenmaal_08">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-09.webp" alt="verdensmaal_09">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-10.webp" alt="verdensmaal_10">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-11.webp" alt="verdensmaal_11">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-12.webp" alt="verdensmaal_12">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-13.webp" alt="verdensmaal_13">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-14.webp" alt="verdensmaal_14">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-15.webp" alt="verdensmaal_15">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-16.webp" alt="verdensmaal_16">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-17.webp" alt="verdenmaal_17">
+			<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/FN-Verdensmaal-ikon-logo.webp" alt="alle_verdensmaal">
 
 			</section>
+
+			<section id="verdensmaal-sortering">
+				<nav id="filtrering"></nav>
+				
+				
+			</section>
+
 			
-		<section id="projekt-oversigt"></section>
+		<section id="projekt-oversigt">
 			
 <template>
 				<article class="container_article">
@@ -184,16 +176,16 @@ p {
 					<p></p>
 </article>
 </template>
-
+</section>
 	
 </main><!-- #main -->
 			<script>
 
 
-				let projekt;
+				let projekt ;
 				
 				const liste = document.querySelector("#projekt-oversigt");
-				const skabelon = document.querySelector("template");
+				const skabelon =document.querySelector("template");
 				let filterProjekt = "alle";
 				document.addEventListener("DOMContentLoaded", start);
 
@@ -205,79 +197,47 @@ p {
 
 
 const url = "http://mariasattrup.dk/kea/unesco/wp-json/wp/v2/projekt?per_page=100";
-const caturl = "http://mariasattrup.dk/kea/unesco/wp-json/wp/v2/verdensml?per_page=100";
+const caturl = "http://mariasattrup.dk/kea/unesco/wp-json/wp/v2/categories";
 
-let verdensmaal;
-let filter = "alle";
-
+let categories;
 
 async function getJson() {
 	console.log("getJson");
 	let response = await fetch(url); 
-	const catdata = await fetch(caturl);
+	// const catdata = await fetch(caturl);
 
 	projekt = await response.json();
-	verdensmaal = await catdata.json();
-	console.log(verdensmaal);
-	visProjekter(projekt);
-	opretknapper();
-	addEventListenersToButtons();
-
-	const filtrerKnapper = document.querySelectorAll("#verdensmaal-knapper img");
-	//filterKnapper.forEach(knap => knap.addEventListener("click", filtrerProjekter));
-} 
-
-function addEventListenersToButtons() {
-	console.log("addEventListenersToButtons");
-	document.querySelectorAll(".filter").forEach(elm => {
-		elm.addEventListener("click", filtrering);
-	})
-}
-function filtrering(){
-	filter = this.dataset.maal;
-	document.querySelector("h2").textContent = this.textContent;
-	document.querySelectorAll(".filter").forEach(elm => {
-		elm.classList.remove("valgt");
-	}) 
-	this.classList.add("valgt");
+	// categories = await catdata.json();
+	console.log(categories);
 	visProjekter();
-	
-}
+	// opretknapper();
+} 
+// function opretknapper(){
+// 	categories.forEach(cat =>{
+// 		document.querySelector("#filtrering").innerHTML += `<button class="filter" data-projekt="${cat._id}">${cat.name}</button>`}
+// 		)
 
-
-function opretknapper(){
-	console.log("knapper som billeder");
-	verdensmaal.forEach(vm =>{
-		document.querySelector("#verdensmaal-knapper").innerHTML += `<img class="filter" data-projekt="${vm._id}" src="${vm.verdensmlslogobillede.guid}"></img>`}
-		)
-
-	}
+// 	}
+// }
 
 function visProjekter() {
 		console.log("visProjekter");
 	console.log(projekt);
-	liste.textContent = "";
 	projekt.forEach(projekt => {
-		if (filter == projekt.maal || filter == "alle") {
 		console.log("foreach kører på projekter");
 		const klon = skabelon.cloneNode(true).content;
 		klon.querySelector("h2").textContent = projekt.title.rendered;
 		klon.querySelector("img").src = projekt.billede.guid;
 
-		klon.querySelector("article").addEventListener("click", () => {location.href = projekt.link;
+		klon.querySelector("article").addEventListener("click", () => {
+			location.href = projekt.link;
 		})
 	
 
 		//apppend klon til #projekt-oversigt
-		// const beholder = document.querySelector("#projekt-oversigt");
-		liste.appendChild(klon);
-	}})
-}
-
-function filtrerProjekter() {
-	console.log("filtrerProjekter")
-	filter = this.dataset.maal;
-	visProjekter();
+		const beholder = document.querySelector("#projekt-oversigt");
+		beholder.appendChild(klon);
+	})
 }
 </script>
 		
