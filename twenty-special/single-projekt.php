@@ -51,32 +51,29 @@ p {
   margin-block: 3rem;
 		}
 		
-	#projekt-oversigt {
-		display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-		gap: 1rem;
-	}
+
 
 </style>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
- <article class="grid">
+ <article class="single">
+   <h2></h2>
         <div class="emg">
             <img class="image" src="" alt="">
         </div>
 
         <section>
-            <h2></h2>
-            <h3>Overskrift</h3>
+            
+            <h3></h3>
             <p class="overskrift"></p>
             <h3>Beskrivelse</h3>
             <p class="beskrivelse"></p>
             <h3>Skole</h3>
             <p class="skole"></p>
             <div class="cont">
-               <a class="knap" href="http://www.mariasattrup.dk/kea/unesco/projekter">TILBAGE</a>
+               <a class="knap" href="http://www.mariasattrup.dk/kea/unesco/projekter">Tilbage</a>
             </div>
         </section>
 
