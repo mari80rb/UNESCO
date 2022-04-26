@@ -20,10 +20,7 @@ get_header();
   margin: 0;
   box-sizing: border-box;
 }
-#masthead {
-	color: green;
-	
-}
+
 		h1 {
   font-size: 3rem;
 }
@@ -60,14 +57,8 @@ h3 {
 p {
   font-size: 1.1rem;
 }
-		  /* img {
-           vertical-align: middle;
-
- width: 100%;
- 
-
-        } */
-		main{
+	
+		main {
 			  max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -78,19 +69,13 @@ p {
 			padding-bottom: 80px;
 		}
 		
-	/* #projekt-oversigt {
-		display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-		gap: 20px;
-		
-		
-	} */
+
 
 	#projekt-oversigt {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		grid-gap: 30px;
-		background-color: lightgrey;
+		
 
 
 		
@@ -101,17 +86,12 @@ p {
 
 
 	
-		/* height: 200px;
-		width: 200px; */
-		
 	}
 	.container_article {
 		background-color: darkgreen;
 		height: 400px;
-		/* min-width: 300px;
-		max-height: 400px;
-		 */
-		
+
+	
 	}
 	
 	.container_article h2 {
@@ -122,6 +102,7 @@ p {
 		width: 400px;
 		height: 300px;
 		align: center;
+		filter: greyscale(100%);
 
 	}
 	.container_article h2{
