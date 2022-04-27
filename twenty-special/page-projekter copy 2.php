@@ -23,33 +23,12 @@ get_header();
   margin: 0;
   box-sizing: border-box;
 }
-.site-title a {
+.site-title p, a {
 	display: none;
-}
-
-#site-navigation img {
-	max-width: 100px;
-	padding-right: 2%;
-}
-
-#site-navigation {
-	display: block;
-}
-
-#site-navigation a {
-	color: white;
-	font-size: 1rem;
-}
-
-#menu-hovedemenu a:hover {
-	color: #05cab6;
 }
 
 .site-title {
 	background-image: url(http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/cropped-logohvid.webp);
-	aspect-ratio: 354/208;
-	position: fixed;
-	image-size:
 }
 @font-face {
 	font-family: lato;
@@ -180,9 +159,7 @@ p {
 		text-align: center;
 	}
 
-.site-footer {
-	background-color: lightgrey;
-}
+
 
 </style>
 
@@ -243,7 +220,7 @@ async function getJson() {
 	projekt = await response.json();
 	verdensmaal = await catdata.json();
 	console.log(verdensmaal);
-	visProjekter(filter);
+	visProjekter(projekt);
 	opretknapper();
 	addEventListenersToButtons();
 
@@ -287,8 +264,8 @@ function visProjekter(filter) {
 		console.log(filter);
 		console.log(elm.verdensml);
 		console.log(parseInt(filter));
-		console.log(elm.verdensml.includes(parseInt(filter)));
-		if (elm.verdensml.includes(parseInt(filter)) || filter == "alle") {
+		console.log(filter == elm.verdensml.includes(parseInt(filter)));
+		if (filter == elm.verdensml.includes(parseInt(filter)) || filter == "alle") {
 		console.log("foreach kører på projekter");
 		const klon = skabelon.cloneNode(true).content;
 		klon.querySelector("h2").textContent = elm.title.rendered;

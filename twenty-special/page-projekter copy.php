@@ -82,14 +82,26 @@ p {
 }
 
 #verdensmaal-knapper{
-	display: grid;
+	/* display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
-	grid-gap: 10px;
+	grid-gap: 10px; */
+
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+		grid-gap: 10px;
+		max-width: 1000px;
+		margin-inline: auto;
+		padding-bottom: 50px;
 }
+/* display: grid;
+		grid-template-columns: repeat(6, 150px);
+		gap: 20px;
+} */
 #verdensmaal-knapper img{
 	object-fit: cover;
 	max-width: 100px;
+	align: center;
 }
 	
 		main {
@@ -113,10 +125,7 @@ p {
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		grid-gap: 30px;
 		
-		  
-		
-
-
+	
 		
 	}
 	#projekt-oversigt img {
@@ -160,34 +169,11 @@ p {
 			<h1 id="overskrift">Projekter</h1>
 			<p>Her kan du søge på alle skolernes uploadede projekter, og få inspiration til din undervisning.</p>
 			<h2>Sorter efter verdensmål:</h2>
+			<nav id="filtrering"></nav>
 			<section id="verdensmaal-knapper">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-01.webp" data-maal="13" alt="verdensmaal_01">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-02.webp" data-maal="12"alt="verdenmaal_02">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-03.webp" data-maal="14"alt="verdensmaal_03">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-04.webp" data-maal="15"alt="verdensmaal_04">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-05.webp" data-maal="16"alt="verdenmaal_05">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-06.webp" data-maal="17"alt="verdenmaal_06">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-07.webp" data-maal="18"alt="verdenmaal_07">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-08.webp" data-maal="19"alt="verdenmaal_08">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-09.webp" data-maal="20"alt="verdensmaal_09">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-10.webp" data-maal="21"alt="verdensmaal_10">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-11.webp" data-maal="22"alt="verdensmaal_11">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-12.webp" data-maal="23"alt="verdensmaal_12">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-13.webp" data-maal="24"alt="verdensmaal_13">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-14.webp" data-maal="25"alt="verdensmaal_14">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-15.webp" data-maal="26"alt="verdensmaal_15">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-16.webp" data-maal="27"alt="verdensmaal_16">
-			<img class="filter" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/Verdensmaal-ikon-17.webp" data-maal="28"alt="verdenmaal_17">
-			<img class="filter valgt" src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/FN-Verdensmaal-ikon-logo.webp" data-maal="alle"alt="alle_verdensmaal">
+	
 
 			</section>
-
-			<section id="verdensmaal-sortering">
-				<nav id="filtrering"></nav>
-				
-				
-			</section>
-
 			
 		<section id="projekt-oversigt"></section>
 			
@@ -235,43 +221,45 @@ async function getJson() {
 	verdensmaal = await catdata.json();
 	console.log(verdensmaal);
 	visProjekter(projekt);
+	opretknapper();
 	addEventListenersToButtons();
 
-	const filtrerKnapper = document.querySelectorAll("#verdensmaal-knapper img");
-	//filterKnapper.forEach(knap => knap.addEventListener("click", filtrerProjekter));
+	
 } 
-
+function opretknapper(){
+	console.log("knapper som billeder");
+	verdensmaal.forEach(vm =>{
+		document.querySelector("#verdensmaal-knapper").innerHTML += `<img class="filter" data-projekt="${vm._id}" src="${vm.verdensmlslogobillede.guid}"></img>`}
+		)
+		addEventListenersToButtons();
+	}
+	
 function addEventListenersToButtons() {
 	console.log("addEventListenersToButtons");
-	document.querySelectorAll(".filter").forEach(elm => {
-		elm.addEventListener("click", filtrering);
+	document.querySelectorAll("#filtrering img").forEach(elm => {
+		elm.addEventListener("click", filtrerProjekter);
 	})
 }
-function filtrering(){
-	filter = this.dataset.maal;
-	document.querySelector("h2").textContent = this.textContent;
-	document.querySelectorAll(".filter").forEach(elm => {
-		elm.classList.remove("valgt");
-	}) 
-	this.classList.add("valgt");
-	visProjekter();
-}
-
-
-// function opretknapper(){
-// 	categories.forEach(cat =>{
-// 		document.querySelector("#filtrering").innerHTML += `<button class="filter" data-projekt="${cat._id}">${cat.name}</button>`}
-// 		)
-
-// 	}
+// function filtrering(){
+// 	filter = this.dataset.maal;
+// 	document.querySelector("h2").textContent = this.textContent;
+// 	document.querySelectorAll(".filter").forEach(elm => {
+// 		elm.classList.remove("valgt");
+// 	}) 
+// 	this.classList.add("valgt");
+// 	visProjekter();
+	
 // }
+
+
+
 
 function visProjekter() {
 		console.log("visProjekter");
 	console.log(projekt);
 	liste.textContent = "";
 	projekt.forEach(projekt => {
-		if (filter == projekt.maal || filter == "alle") {
+		if (filter == projekt.verdensml.includes(parseInt(filter)) || filter == "alle") {
 		console.log("foreach kører på projekter");
 		const klon = skabelon.cloneNode(true).content;
 		klon.querySelector("h2").textContent = projekt.title.rendered;
@@ -288,8 +276,8 @@ function visProjekter() {
 }
 
 function filtrerProjekter() {
-	console.log("filtrerProjekter")
-	filter = this.dataset.maal;
+	filter = this.dataset.projekt;
+	console.log(filter);
 	visProjekter();
 }
 </script>

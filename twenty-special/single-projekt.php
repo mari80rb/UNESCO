@@ -16,6 +16,47 @@ get_header();
   margin: 0;
   box-sizing: border-box;
 }
+.site-title a {
+	display: none;
+}
+
+#site-navigation img {
+	max-width: 100px;
+	padding-right: 2%;
+}
+
+#site-navigation {
+	display: block;
+}
+
+#site-navigation a {
+	color: white;
+	font-size: 1rem;
+}
+
+#menu-hovedemenu a:hover {
+	color: #05cab6;
+}
+
+.site-title {
+	background-image: url(http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/cropped-logohvid.webp);
+	aspect-ratio: 354/208;
+	position: fixed;
+	image-size:
+}
+@font-face {
+	font-family: lato;
+	src: url(lato-bold-webfont.woff2);
+}
+.site-header {
+	background-color: #577e20;
+
+}
+
+a {
+	font-family: lato;
+	color: white;
+}
 		h1 {
   font-size: 3rem;
 }
