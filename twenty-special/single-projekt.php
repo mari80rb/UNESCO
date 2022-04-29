@@ -46,7 +46,7 @@ get_header();
 }
 @font-face {
 	font-family: lato;
-	src: url(lato-bold-webfont.woff2);
+	src: url("<?php echo get_stylesheet_directory_uri() ?>/lato-bold-webfont.woff2");
 }
 .site-header {
 	background-color: #577e20;
@@ -59,23 +59,27 @@ a {
 }
 		h1 {
   font-size: 3rem;
+  font-family: lato;
 }
 
 h2 {
   font-size: 1.2rem;
   line-height: 1.25;
   margin-bottom: 2;
+  font-family: lato;
 }
 
 h3 {
   font-size: 1.0rem;
   line-height: 1.25;
   margin-bottom: 1rem;
+  font-family: lato;
 }
 
 
 p {
   font-size: 1.1rem;
+  font-family: lato;
 }
 		  img {
            vertical-align: middle;

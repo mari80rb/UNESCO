@@ -25,11 +25,17 @@ get_header();
 }
 .site-title a {
 	display: none;
+	
+}
+
+.site-branding-container{
+	display: block;
 }
 
 #site-navigation img {
-	max-width: 100px;
+	max-width: 130px;
 	padding-right: 2%;
+	vertical-align: middle;
 }
 
 #site-navigation {
@@ -38,11 +44,15 @@ get_header();
 
 #site-navigation a {
 	color: white;
-	font-size: 1rem;
+	font-size: 0.8rem;
 }
 
 #menu-hovedemenu a:hover {
 	color: #05cab6;
+}
+
+.main-navigation .sub-menu {
+	background-color: #33344B;
 }
 
 .site-title {
@@ -67,6 +77,7 @@ a {
 
 		h1 {
   font-size: 3rem;
+  font-family: lato;
 }
 h2 #overskrift ::before {
   background: #767676;
@@ -81,6 +92,7 @@ h2 {
   font-size: 1.2rem;
   line-height: 1.25;
   margin-bottom: 2;
+  font-family: lato;
 }
 h2::before {
   background: #767676;
@@ -100,25 +112,19 @@ h3 {
 
 p {
   font-size: 1.1rem;
+  font-family: lato;
 }
 
 #verdensmaal-knapper{
-	/* display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
-	grid-gap: 10px; */
 
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-		grid-gap: 10px;
-		max-width: 1000px;
+		grid-gap: 20px;
+		max-width: 1200px;
 		margin-inline: auto;
 		padding-bottom: 50px;
 }
-/* display: grid;
-		grid-template-columns: repeat(6, 150px);
-		gap: 20px;
-} */
+
 #verdensmaal-knapper img{
 	object-fit: cover;
 	max-width: 100px;
@@ -137,6 +143,14 @@ p {
 		}
 		#verdensmaal-sortering {
 			padding-bottom: 80px;
+		}
+
+		#werdensmaal-knapper img {
+			transition: transform .4s;
+		}
+		#verdensmaal-knapper img:hover {
+			transform: scale(1.2);
+			curser: pointer;
 		}
 		
 
@@ -183,6 +197,12 @@ p {
 .site-footer {
 	background-color: lightgrey;
 }
+/* .site-info {
+	background-image: url(http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/logo1.webp);
+	aspect-ratio: 354/208;
+	position: fixed;
+	
+} */
 
 </style>
 
@@ -191,12 +211,14 @@ p {
 		<main id="main" class="site-main">
 			<h1 id="overskrift">Projekter</h1>
 			<p>Her kan du søge på alle skolernes uploadede projekter, og få inspiration til din undervisning.</p>
-			<h2>Sorter efter verdensmål:</h2>
+			<h2>Søg på verdensmål:</h2>
 			<nav id="filtrering"><img data-projekt src="" alt=""></nav>
 			<section id="verdensmaal-knapper">
+			
 	
 
 			</section>
+			<h2 class="kategorititel">Alle verdensmål</h2>
 			
 		<section id="projekt-oversigt"></section>
 			
@@ -251,42 +273,29 @@ async function getJson() {
 } 
 
 function addEventListenersToButtons() {
-	// console.log("addEventListenersToButtons");
-	// console.log(document.querySelectorAll("#filtrering img"));
+
 	document.querySelectorAll("#verdensmaal-knapper img").forEach(elm => {
 		elm.addEventListener("click", filtrerProjekter);
 	})
 }
-// function filtrering(){
-// 	filter = this.dataset.maal;
-// 	document.querySelector("h2").textContent = this.textContent;
-// 	document.querySelectorAll(".filter").forEach(elm => {
-// 		elm.classList.remove("valgt");
-// 	}) 
-// 	this.classList.add("valgt");
-// 	visProjekter();
-	
-// }
+
 
 
 function opretknapper(){
-	// console.log(verdensmaal);
+	
 	verdensmaal.forEach( function (vm){
-		document.querySelector("#verdensmaal-knapper").innerHTML += `<img class="filter" data-projekt="${vm.id}" src="${vm.verdensmlslogobillede.guid}"></img>`;
-		// console.log(vm);
+		document.querySelector("#verdensmaal-knapper").innerHTML += `<img class="filter" data-projekt="${vm.id}" name="${vm.name}" src="${vm.verdensmlslogobillede.guid}"></img>`;
+	
 	})
-		
+
 		addEventListenersToButtons();
 	}
 
 function visProjekter(filter) {
-		console.log("visProjekter");
-	console.log(projekt);
+
 	liste.innerHTML = "";
 	projekt.forEach(elm => {
-		console.log(filter);
-		console.log(elm.verdensml);
-		console.log(parseInt(filter));
+		
 		console.log(elm.verdensml.includes(parseInt(filter)));
 		if (elm.verdensml.includes(parseInt(filter)) || filter == "alle") {
 		console.log("foreach kører på projekter");
@@ -296,20 +305,18 @@ function visProjekter(filter) {
 
 		klon.querySelector("article").addEventListener("click", () => {location.href = elm.link;
 		})
-	
 
-		//apppend klon til #projekt-oversigt
-		// const beholder = document.querySelector("#projekt-oversigt");
 		liste.appendChild(klon);
 	}})
 }
 
 function filtrerProjekter() {
 	filter = this.dataset.projekt;
+	document.querySelector(".kategorititel").textContent = this.getAttribute("name");
 	projekt.forEach(elm => {
 		console.log(elm.verdensml);
 	})
-	console.log(filter);
+
 	visProjekter(filter);
 }
 </script>
