@@ -212,7 +212,7 @@ p {
 			<h1 id="overskrift">Projekter</h1>
 			<p>Her kan du søge på alle skolernes uploadede projekter, og få inspiration til din undervisning.</p>
 			<h2>Søg på verdensmål:</h2>
-			<nav id="filtrering"><img data-projekt src="" alt=""></nav>
+			<!-- <nav id="filtrering"><img data-projekt src="" alt=""></nav> -->
 			<section id="verdensmaal-knapper">
 			
 	
@@ -268,7 +268,7 @@ async function getJson() {
 	visProjekter(filter);
 	opretknapper();
 	addEventListenersToButtons();
-
+¢
 	
 } 
 
