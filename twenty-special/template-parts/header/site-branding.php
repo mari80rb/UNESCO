@@ -31,7 +31,7 @@
 	<?php endif; ?>
 	<?php if ( has_nav_menu( 'menu-1' ) ) : ?>
 		<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'twentynineteen' ); ?>">
-		<img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/logohvid.webp" alt="logo">
+		<a href="http://mariasattrup.dk/kea/unesco/"><img src="http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/logohvid.webp" alt="logo"></a>
 			<?php
 			wp_nav_menu(
 				array(

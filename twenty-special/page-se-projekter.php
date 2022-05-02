@@ -152,6 +152,7 @@ p {
 			transform: scale(1.2);
 			curser: pointer;
 		}
+		
 
 
 	#projekt-oversigt {
@@ -189,14 +190,19 @@ p {
 
 	}
 	.container_article h2{
-		color: black;
+		color: grey;
 		text-align: center;
 	}
 
 .site-footer {
 	background-color: lightgrey;
 }
-
+/* .site-info {
+	background-image: url(http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/logo1.webp);
+	aspect-ratio: 354/208;
+	position: fixed;
+	
+} */
 
 </style>
 
@@ -262,7 +268,7 @@ async function getJson() {
 	visProjekter(filter);
 	opretknapper();
 	addEventListenersToButtons();
-
+¢
 	
 } 
 

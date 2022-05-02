@@ -37,6 +37,9 @@ get_header();
 #menu-hovedemenu a:hover {
 	color: #05cab6;
 }
+.main-navigation .sub-menu {
+	background-color: #33344B;
+}
 
 .site-title {
 	background-image: url(http://mariasattrup.dk/kea/unesco/wp-content/uploads/2022/04/cropped-logohvid.webp);
@@ -68,6 +71,7 @@ h2 {
   margin-bottom: 2;
   font-family: lato;
 }
+
 
 h3 {
   font-size: 1.0rem;
